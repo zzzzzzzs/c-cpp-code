@@ -1,4 +1,8 @@
 add_rules("mode.debug", "mode.release")
+-- 优化级别
+set_optimize("fastest")
+-- 设置c代码标准：c99， c++代码标准：c++11
+set_languages("c11", "cxx11")
 
 target("hello")
     set_kind("binary")
