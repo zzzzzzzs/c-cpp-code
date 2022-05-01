@@ -1,6 +1,6 @@
 add_rules("mode.debug", "mode.release")
 -- 优化级别
-set_optimize("fastest")
+set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
 set_languages("c11", "cxx11")
 
@@ -24,9 +24,14 @@ target("dict")
     set_kind("binary")
     add_files("src/collection/dict*.c")
 
+target("vec")
+    set_kind("binary")
+    add_files("src/collection/vec*.c")
+
 target("cjson")
     set_kind("binary")
     add_files("src/cJSON/*.c")
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
