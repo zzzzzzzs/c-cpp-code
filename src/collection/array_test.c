@@ -1,6 +1,6 @@
-#include <stdio.h>
-
 #include "array.h"
+
+#include <stdio.h>
 
 typedef struct _stud {
   AS_ARRAY_ITEM;
@@ -9,7 +9,7 @@ typedef struct _stud {
   int score;
 } stud_t;
 
-int main(int argc, char **argv) {
+void test1() {
   array aarray;
   array_init(&aarray);
 
@@ -64,5 +64,38 @@ int main(int argc, char **argv) {
     printf("array_get: id=%d, name=%s, score=%d\n", temp->id, temp->name,
            temp->score);
   }
+}
+
+void test2() {
+  array aarray;
+  array_init(&aarray);
+  int num1 = 1;
+  int num2 = 2;
+  int num3 = 3;
+  int num4 = 4;
+  array_push_back(&aarray, &num1);
+  array_push_back(&aarray, &num2);
+  array_push_back(&aarray, &num3);
+  array_push_back(&aarray, &num4);
+  array_item *item = NULL;
+  printf("array size = %ld\n", get_array_size(&aarray));
+
+  int from = 0;
+  array_for_each(&aarray, item, from) {
+    int *temp = (int *)item;
+    if (temp != NULL) {
+      printf("temp = %d\n", *temp);
+    }
+  }
+  array_item *arr = array_find_by_index(&aarray, 0);
+  printf("arr = %d\n", *(int *)arr);
+
+  int size = get_array_size(&aarray);
+  printf("size = %d\n", size);
+}
+
+int main(int argc, char **argv) {
+  // test1();
+  test2();
   return 0;
 }

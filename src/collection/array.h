@@ -1,40 +1,35 @@
-#include<stdlib.h>
-#include<stdio.h>
-#include<assert.h>
-#include<string.h>
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #ifndef __ARRAY_H_
 #define __ARRAY_H_
 
 #define ARRAY_INIT_CAPACITY 16
 
-typedef struct _array_item
-{
-    void *data;//private data.
-}array_item;
+typedef struct _array_item {
+  void *data;  // private data.
+} array_item;
 
-typedef struct _array
-{
-    size_t size;
-    size_t capacity;
-    array_item **table;
-}array;
+typedef struct _array {
+  size_t size;
+  size_t capacity;
+  array_item **table;
+} array;
 
 #define AS_ARRAY_ITEM array_item __array_item
 
 #define OP_ARRAY_SUCCESS (1)
 #define OP_ARRAY_FAIL (-1)
 
-
-
-#define array_for_each(array, temp, from)\
-           for((temp) = *((array)->table + (from));\
-                (from) < (array)->size;\
-                  ++(from), (temp) = *((array)->table + (from)))
-
+#define array_for_each(array, temp, from)                           \
+  for ((temp) = *((array)->table + (from)); (from) < (array)->size; \
+       ++(from), (temp) = *((array)->table + (from)))
 
 void array_init(array *array);
 
+// 获取数组的大小
 size_t get_array_size(array *array);
 
 int array_insert_before(array *array, int index, void *item);
@@ -56,4 +51,3 @@ void array_free_shallow(array *array);
 void array_free_deep(array *array);
 
 #endif
-

@@ -8,12 +8,16 @@ int main(int argc, char** argv) {
   time_t now;
   time(&now);
 
+  //   for (int i = 0; i < 100000000000; i++) {
+  //     for (int j = 0; j < 100000000000; j++) {
+  //       for (int k = 0; k < 100000000000; k++) {
+  //         num++;
+  //       }
+  //     }
+  //   }
   for (int i = 0; i < 100000000000; i++) {
-    for (int j = 0; j < 100000000000; j++) {
-      for (int k = 0; k < 100000000000; k++) {
-        num++;
-      }
-    }
+    num++;
+    printf("%d\n", num);
   }
   // 结束时间
   time_t end;

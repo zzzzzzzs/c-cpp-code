@@ -5,7 +5,7 @@
 
 /* simple constructor */
 Dictionary *create_dict(void) {
-  Dictionary *p_dic = malloc(sizeof(Dictionary));
+  Dictionary *p_dic = (Dictionary *)malloc(sizeof(Dictionary));
   if (p_dic) {
     p_dic->number_of_elements = 0;
 
