@@ -4,6 +4,11 @@ set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
 set_languages("c11", "cxx11")
 
+toolchain("mingw")
+    set_kind("standalone")
+    set_sdkdir("D:/software/mingw64")
+toolchain_end()
+
 target("hello")
     set_kind("binary")
     add_files("src/hello/main.c")
@@ -32,6 +37,9 @@ target("cjson")
     set_kind("binary")
     add_files("src/cJSON/*.c")
 
+target("malloc_dbg")
+    set_kind("binary")
+    add_files("src/tools/malloc_dbg*.c")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

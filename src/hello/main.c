@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
   //     }
   //   }
   // }
-  for (long long i = 0; i < 100000000000000; i++) {
+  for (long long i = 0; i < 10000000000000000; i++) {
     num++;
   }
   // 结束时间
