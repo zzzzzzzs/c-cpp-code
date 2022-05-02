@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
+// https://stackoverflow.com/questions/67629921/print-combine-generic-and-variadic-functions
 // compiler gcc
 #define COUNT(...)                                  \
   ({                                                \
