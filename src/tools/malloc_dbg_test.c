@@ -12,6 +12,7 @@
 
 #include <stdio.h>  /// For IO operations if needed.
 #include <stdlib.h>  /// For the EXIT_SUCCESS macro and the "real" malloc, calloc and free functions.
+#include <windows.h>
 
 /**
  * @brief Main function
@@ -20,11 +21,20 @@
  * @returns 0 on exit
  */
 int main(int argc, char* argv[]) {
+  int i = 0;
+
   int* iptr = (int*)malloc(10 * sizeof(int));
   char* cptr = (char*)calloc(256, sizeof(char));
 
   free(iptr);
-  free(cptr);
+  // free(cptr);
+  // TODO ctrl + c also work, but it doesn't print.
+  while (1) {
+    i++;
+    /* code */
+    Sleep(1000);
+    printf("%d\r\n", i);
+  }
 
   return 0;
 }
