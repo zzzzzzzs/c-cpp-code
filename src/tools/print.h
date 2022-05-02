@@ -1,4 +1,5 @@
 #include <stdarg.h>
+#include <stdio.h>
 // compiler gcc
 #define COUNT(...)                                  \
   ({                                                \
@@ -14,24 +15,25 @@
 
 #define _print(object) \
   printf( _Generic((object),  \
-        _Bool: "bool%d",                  unsigned char: "%hhu",          \
-         char: "%c",                     signed char: "%hhd",            \
-    short int: "%d",         unsigned short int:"%d",     \
-          int: "%d",                     unsigned int: "%u",           \
-     long int: "%lu",           unsigned long int: "%lu",      \
-long long int: "%llu", unsigned long long int: "%llu", \
-        float: "%f",                         double: "%f",                 \
-  long double: "%Lf",                   char *: "%s",        \
-       void *: "%p",                int *: "%p",         \
-      default: "<unknow object at %p>") , object)
-void pyprint(int LEN, ...) {
-  va_list ap;
-  va_start(ap, LEN);
-  int i;
-  for (int i = 0; i < LEN; i++) {
-    _print(va_arg(ap, int));
-  }
-}
+    _Bool: "bool%d",        \
+    unsigned char: "%hhu",                  \
+    char: "%c",       \
+    signed char: "%hhd",                    \
+    short int: "%d",        \
+    unsigned short int:"%d",            \
+    int: "%d",        \
+    unsigned int: "%u",                   \
+    long int: "%lu",        \
+    unsigned long int: "%lu",             \
+    long long int: "%llu",\        
+    unsigned long long int: "%llu",         \
+    float: "%f",        \
+    double: "%f",                         \
+    long double: "%Lf",       \
+    char *: "%s",               \
+    void *: "%p",               \
+    int *: "%p",                \
+    default: "<unknow object at %p>") , object)
 
 #define print(...) print_(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
 #define print_(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, CNT, ...) \
@@ -52,4 +54,5 @@ void pyprint(int LEN, ...) {
 // print('A', 10, -10);  ->6510-10
 // but print only receive int object because va_arg(ap, int)
 
-// TODO The solution can handle up to 8 arguments but this limitation can be add argument.
+// TODO The solution can handle up to 8 arguments but this limitation
+// can be add argument.

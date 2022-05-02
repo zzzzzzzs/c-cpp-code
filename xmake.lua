@@ -51,7 +51,7 @@ target("malloc_dbg")
     set_kind("binary")
     add_files("src/tools/malloc_dbg*.c")
 
-target("print_tools")
+target("print")
     set_kind("binary")
     add_files("src/tools/print_*.c")
 
