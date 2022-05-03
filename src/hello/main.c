@@ -15,19 +15,29 @@
 
 // %llu--> 为unsigned long long int或unsigned long long
 
-typedef struct {
-  const char* ptr;
-  size_t info;
-} str;
-
-#define str_null str { 0, 0 }
-
-// test print
-void test1(void) {
-  str a;
-  printf("%d", str_null.info);
-}
 int main(int argc, char** argv) {
-  test1();
+  long long num = 0;
+  // 循环
+  // 当前时间
+  clock_t start_t;
+  start_t = clock();
+
+  // for (int i = 0; i < 100000000000; i++) {
+  //   for (int j = 0; j < 100000000000; j++) {
+  //     for (int k = 0; k < 100000000000; k++) {
+  //       num++;
+  //     }
+  //   }
+  // }
+  for (long long i = 0; i < 10000000000000000; i++) {
+    num++;
+  }
+  // 结束时间
+  clock_t finish_t;
+  finish_t = clock();
+  printf("%lld\n", num);
+  printf("%f\n", (double)(finish_t - start_t) / CLOCKS_PER_SEC);
+
+  //   printf("hello world!\n");
   return 0;
 }

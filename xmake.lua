@@ -2,7 +2,7 @@ add_rules("mode.debug", "mode.release")
 -- 优化级别
 set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
-set_languages("c99", "cxx11")
+set_languages("c11", "cxx11")
 
 toolchain("gcc")
     set_kind("standalone")
@@ -45,6 +45,11 @@ target("easy_log")
     add_files(
         "src/easylogger/src/*.c"
         )
+
+-- TODO algorithm
+target("sparse_matrix")
+    set_kind("binary")
+    add_files("src/algorithms/sparse_matrix.c")
 
 -- TODO tool
 target("malloc_dbg")
