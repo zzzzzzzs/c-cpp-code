@@ -57,3 +57,18 @@
 
 // TODO The solution can handle up to 8 arguments but this limitation
 // can be add argument.
+
+
+// https://mp.weixin.qq.com/s/K3yUcTiSTiqbVt5fwVM3UQ
+#define  DEBUG   1
+
+#if DEBUG
+  #define DBG_PRINTF(fmt, args...)  \
+  do\
+  {\
+      printf("<<File:%s  Line:%d  Function:%s>> ", __FILE__, __LINE__, __FUNCTION__);\
+      print(fmt, ##args);\
+  }while(0)
+#else
+  #define DBG_PRINTF(args...)
+#endif
