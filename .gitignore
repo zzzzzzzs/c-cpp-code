@@ -54,5 +54,7 @@ dkms.conf
 .idea
 *cmake-build-debug
 .xmake/
-.vscode/
-.build/
+build/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json

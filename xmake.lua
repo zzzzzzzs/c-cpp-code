@@ -33,6 +33,11 @@ target("vec")
     set_kind("binary")
     add_files("src/collection/vec*.c")
 
+target("sds")
+    set_kind("binary")
+    add_files(
+        "src/collection/sds*.c")
+
 target("cjson")
     set_kind("binary")
     add_files("src/cJSON/*.c")

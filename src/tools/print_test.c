@@ -15,7 +15,9 @@ int main() {
   print('A');
   print("sadad");
   // DBG_PRINTF("%d", 1);
-  if (1) {
+  if (0) {
     DBG_PRINTF("asdads");
+  }else{
+    DBG_PRINTF("asdadsasdsadads");
   }
 }
