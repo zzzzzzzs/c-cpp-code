@@ -260,20 +260,25 @@ void printLeaks() {
   int nbBlocks = 0;
 
   if (tmp) {
+    printf("\033[0;31m");
     printf("Memory Leaks detected.\n");
+    printf("\033[0m");
   }
 
   while (tmp) {
     previous = tmp;
+    printf("\033[0;31m");
     printf("\n%ld bytes lost\n", tmp->bytes);
     printf("address : 0x%p in %s\t%s:%d\n", tmp->ptr, tmp->functionName,
            tmp->fileName, tmp->line);
     printf("\n====================================\n");
+    printf("\033[0m");
     sum += tmp->bytes;
     tmp = tmp->next;
     free(previous);
     nbBlocks++;
   }
-
+  printf("\033[0;31m");
   printf("SUMMARY :\n%ld bytes lost in %d blocks\n", sum, nbBlocks);
+  printf("\033[0m");
 }

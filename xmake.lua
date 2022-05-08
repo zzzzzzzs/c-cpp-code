@@ -1,4 +1,5 @@
 add_rules("mode.debug", "mode.release")
+-- add_rules("mode.debug")
 -- 优化级别
 set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
@@ -6,7 +7,7 @@ set_languages("c11", "cxx11")
 
 toolchain("gcc")
     set_kind("standalone")
-    set_sdkdir("D:/software/mingw64")
+    -- set_sdkdir("D:/software/mingw64")
 toolchain_end()
 
 target("hello")
