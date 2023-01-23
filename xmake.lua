@@ -66,6 +66,14 @@ target("print")
     set_kind("binary")
     add_files("src/tools/print_*.c")
 
+target("print")
+    set_kind("binary")
+    add_files("src/tools/print_*.c")
+
+target("windows-info")
+    set_kind("binary")
+    add_files("src/windows-info/windows-info.cpp")
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
