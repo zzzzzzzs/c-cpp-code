@@ -3,7 +3,8 @@ add_rules("mode.debug", "mode.release")
 -- 优化级别
 -- set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
-set_languages("c14", "cxx14")
+set_languages("c17", "cxx17")
+add_vectorexts("avx", "avx2")
 
 -- toolchain("gcc")
 --     set_kind("standalone")
@@ -81,10 +82,23 @@ target("HashJoin")
 target("LoopJoin")
     set_kind("binary")
     add_files("src/sql_join/LoopJoin.cpp")
+
 target("SortMergeJoin")
     set_kind("binary")
     add_files("src/sql_join/SortMergeJoin.cpp")
---
+
+-- TODO 有问题
+target("HashJoinSimd")
+    set_kind("binary")
+    add_files("src/sql_join/HashJoinSimd.cpp")
+
+-- target("SortMergeJoinSimd")
+--     set_kind("binary")
+--     add_files("src/sql_join/SortMergeJoinSimd.cpp")
+    
+
+
+    --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
 -- ## FAQ
