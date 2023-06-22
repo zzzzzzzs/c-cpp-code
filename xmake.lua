@@ -1,14 +1,14 @@
 add_rules("mode.debug", "mode.release")
 -- add_rules("mode.debug")
 -- 优化级别
-set_optimize("faster")
+-- set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
-set_languages("c11", "cxx11")
+set_languages("c14", "cxx14")
 
-toolchain("gcc")
-    set_kind("standalone")
-    -- set_sdkdir("D:/software/mingw64")
-toolchain_end()
+-- toolchain("gcc")
+--     set_kind("standalone")
+--     set_sdkdir("D:/software/mingw64")
+-- toolchain_end()
 
 target("hello")
     set_kind("binary")
@@ -43,14 +43,14 @@ target("cjson")
     set_kind("binary")
     add_files("src/cJSON/*.c")
 
-target("easy_log")
-    set_kind("binary")
-    add_includedirs(
-        "src/easylogger/inc"
-        )
-    add_files(
-        "src/easylogger/src/*.c"
-        )
+-- target("easy_log")
+--     set_kind("binary")
+--     add_includedirs(
+--         "src/easylogger/inc"
+--         )
+--     add_files(
+--         "src/easylogger/src/*.c"
+--         )
 
 -- TODO algorithm
 target("sparse_matrix")
@@ -70,10 +70,20 @@ target("print")
     set_kind("binary")
     add_files("src/tools/print_*.c")
 
-target("windows-info")
-    set_kind("binary")
-    add_files("src/windows-info/windows-info.cpp")
+-- target("windows-info")
+--     set_kind("binary")
+--     add_files("src/windows-info/windows-info.cpp")
 
+target("HashJoin")
+    set_kind("binary")
+    add_files("src/sql_join/HashJoin.cpp")
+
+target("LoopJoin")
+    set_kind("binary")
+    add_files("src/sql_join/LoopJoin.cpp")
+target("SortMergeJoin")
+    set_kind("binary")
+    add_files("src/sql_join/SortMergeJoin.cpp")
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
