@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
-#include <immintrin.h>
+#include <immintrin.h> // 包含 SIMD 指令集
+
+using namespace std;
 
 // 定义Row结构体
 struct Row {
@@ -11,58 +13,37 @@ struct Row {
     std::string col2;
 };
 
-// 使用 AVX 指令集进行哈希表查找
-template<int N>
-void hash_lookup(const std::vector<Row>& R, const __m256i& join_keys, std::array<const Row*, N>& results) {
-    constexpr int NumLanes = sizeof(__m256i) / sizeof(int);
-    std::unordered_map<int, const Row*> hash_table;
+// TODO HashJoinSIMD 相当于 = 
+int main() {
+     // 定义R表和S表
+    vector<Row> R = {   {1, "A", "B"}, 
+                        {2, "C", "D"}, 
+                        {3, "E", "F"},
+                    };
+    vector<Row> S = { 
+                        {1, "G", "H"}, 
+                        {4, "I", "J"}, 
+                        {2, "K", "L"},
+                        {2, "M", "N"},
+                    };
 
+    // 构建哈希表
+    unordered_map<int, const Row*> hash_table;
     for (const auto& r : R) {
         hash_table[r.join_key] = &r;
     }
 
-    for (int i = 0; i < NumLanes; ++i) {
-        int join_key[N];
-        _mm256_storeu_si256(reinterpret_cast<__m256i*>(join_key), join_keys);
-
-        if (i >= N) break;
-
-        const auto it = hash_table.find(join_key[i]);
-        if (it != hash_table.end()) {
-            results[i] = it->second;
-        } else {
-            results[i] = nullptr;
-        }
-    }
-}
-
-// TODO HashJoin 相当于 =
-int main() {
-     // 定义R表和S表
-    std::vector<Row> R = {   {1, "A", "B"}, 
-                             {2, "C", "D"}, 
-                             {3, "E", "F"},
-                         };
-    std::vector<Row> S = { 
-                             {1, "G", "H"}, 
-                             {4, "I", "J"}, 
-                             {2, "K", "L"},
-                             {2, "M", "N"},
-                         };
-
     // 执行连接操作
-    std::vector<std::pair<Row, Row>> matched_rows;  // 存储匹配的行
-
-    const __m256i JoinKeysS = _mm256_set_epi32(S[3].join_key, S[2].join_key, S[1].join_key, S[0].join_key,
-                                               0, 0, 0, 0);
-    std::array<const Row*, 4> ResultsR{}; // 将数组大小设置为4
-    hash_lookup<4>(R, JoinKeysS, ResultsR);
-
-    // 使用 AVX 指令集进行匹配操作
-    for (int i = 0; i < 4; ++i) {
-        const Row* r = ResultsR[i];
-        if (r != nullptr) {
-            matched_rows.emplace_back(*r, S[i]);
+    vector<pair<Row, Row>> matched_rows;  // 存储匹配的行
+    __m256i join_key_vec; // 定义存储键值的向量
+    for (const auto& s : S) {
+        // 将键值转化为向量进行处理
+        join_key_vec = _mm256_set1_epi32(s.join_key);
+        for (const auto& r : R) {
+            if (_mm256_movemask_ps(_mm256_castsi256_ps(_mm256_cmpeq_epi32(_mm256_setr_epi32(r.join_key, 0, 0, 0, 0, 0, 0, 0), join_key_vec)))) {
+                // 匹配到了
+                matched_rows.emplace_back(r, s); // 将匹配行添加到向量中
+            }
         }
     }
 
