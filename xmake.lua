@@ -96,7 +96,10 @@ target("HashJoinSimd")
 --     set_kind("binary")
 --     add_files("src/sql_join/SortMergeJoinSimd.cpp")
     
-
+-- TODO 自己学习用的数据库
+target("db")
+    set_kind("binary")
+    add_files("src/db-learn/db.cpp")
 
     --
 -- If you want to known more usage about xmake, please see https://xmake.io
