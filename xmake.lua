@@ -67,9 +67,9 @@ target("print")
     set_kind("binary")
     add_files("src/tools/print_*.c")
 
-target("print")
+target("pointer_reference")
     set_kind("binary")
-    add_files("src/tools/print_*.c")
+    add_files("src/pointer_reference/*.cpp")
 
 -- target("windows-info")
 --     set_kind("binary")
