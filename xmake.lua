@@ -75,6 +75,10 @@ target("binary_tree")
     set_kind("binary")
     add_files("src/binary_tree/*.cpp")
 
+target("smart_point")
+    set_kind("binary")
+    add_files("src/smart_point/*.cpp")
+
 -- target("windows-info")
 --     set_kind("binary")
 --     add_files("src/windows-info/windows-info.cpp")
