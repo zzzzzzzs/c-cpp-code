@@ -69,7 +69,11 @@ target("print")
 
 target("pointer_reference")
     set_kind("binary")
-    add_files("src/pointer_reference/*.cpp")
+    add_files("src/pointer_reference/pointer_reference.cpp")
+
+target("ref_clone")
+    set_kind("binary")
+    add_files("src/pointer_reference/ref_clone.cpp")
 
 target("binary_tree")
     set_kind("binary")
