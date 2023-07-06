@@ -75,6 +75,10 @@ target("ref_clone")
     set_kind("binary")
     add_files("src/pointer_reference/ref_clone.cpp")
 
+target("class_initial")
+    set_kind("binary")
+    add_files("src/class_initial/class_initialization.cpp")
+
 target("binary_tree")
     set_kind("binary")
     add_files("src/binary_tree/*.cpp")
