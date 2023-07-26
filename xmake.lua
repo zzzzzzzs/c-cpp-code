@@ -3,8 +3,10 @@ add_rules("mode.debug", "mode.release")
 -- 优化级别
 -- set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
-set_languages("c17", "cxx17")
+set_languages("c++20")
 add_vectorexts("avx", "avx2")
+set_toolchain("cxx", "clang")
+set_toolchain("ld", "clang++")
 
 -- toolchain("gcc")
 --     set_kind("standalone")
@@ -43,7 +45,10 @@ target("sds")
 target("cjson")
     set_kind("binary")
     add_files("src/cJSON/*.c")
-
+    
+target("three_way")
+    set_kind("binary")
+    add_files("src/three_way/*.cpp")
 -- target("easy_log")
 --     set_kind("binary")
 --     add_includedirs(
