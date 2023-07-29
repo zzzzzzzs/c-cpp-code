@@ -1,12 +1,14 @@
 add_rules("mode.debug", "mode.release")
+add_requires("openmp")
+
 -- add_rules("mode.debug")
 -- 优化级别
 -- set_optimize("faster")
 -- 设置c代码标准：c99， c++代码标准：c++11
 set_languages("c++20")
 add_vectorexts("avx", "avx2")
-set_toolchain("cxx", "clang")
-set_toolchain("ld", "clang++")
+set_toolset("cxx", "clang")
+set_toolset("ld", "clang++")
 
 -- toolchain("gcc")
 --     set_kind("standalone")
@@ -87,6 +89,14 @@ target("class_initial")
 target("binary_tree")
     set_kind("binary")
     add_files("src/binary_tree/*.cpp")
+
+target("random_test")
+    add_packages("openmp")    
+    set_kind("binary")
+    -- 启用 OpenMP 支持
+    -- add_cxflags("-fopenmp")
+    add_files("src/random_test/*.cpp")
+
 
 target("smart_point")
     set_kind("binary")

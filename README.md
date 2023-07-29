@@ -11,3 +11,10 @@ xmake g -c
 ```
 xmake -v
 ```
+
+## 切换模式
+```
+xmake f -m debug
+
+xmake f -m release
+```
