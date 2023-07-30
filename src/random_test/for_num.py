@@ -68,7 +68,7 @@ def for_num():
     print(res)
 
 @timefn
-@njit()
+@njit
 def for_num_jit(arr):
     res = 0
     for num in arr:
@@ -86,7 +86,7 @@ def for_num_p(arr):
 x = numpy.random.random((1000, 1000))
 y = numpy.random.random((1000, 1000))
 
-arr = numpy.random.random(100000000)
+arr = numpy.random.random(1000000000)
 
 
 # for_num()

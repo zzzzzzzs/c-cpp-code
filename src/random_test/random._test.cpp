@@ -8,7 +8,7 @@
 // g++ -o random_test random._test.cpp -fopenmp
 // TODO 并行循环，速度非常快，比 python 的 @njit 快上一个数量级
 double for_num() {
-    int size = 100000000;
+    unsigned int size = 100000000;
     std::vector<double> arr(size);
 
     std::random_device rd;
