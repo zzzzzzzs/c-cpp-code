@@ -121,6 +121,11 @@ target("SortMergeJoin")
     set_kind("binary")
     add_files("src/sql_join/SortMergeJoin.cpp")
 
+target("memory_alignment")
+    set_kind("binary")
+    add_files("src/memory_alignment/*.cpp")
+
+
 -- TODO 有问题
 target("HashJoinSimd")
     set_kind("binary")
