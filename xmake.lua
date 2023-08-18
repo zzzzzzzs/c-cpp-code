@@ -125,6 +125,9 @@ target("memory_alignment")
     set_kind("binary")
     add_files("src/memory_alignment/*.cpp")
 
+target("debug_info")
+    set_kind("binary")
+    add_files("src/debug_info/*.cpp")
 
 -- TODO 有问题
 target("HashJoinSimd")
