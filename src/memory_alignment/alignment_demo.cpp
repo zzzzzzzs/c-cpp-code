@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// TODO 内存对齐
 struct __attribute__((aligned(16))) Data {
     int a;
     double b;
