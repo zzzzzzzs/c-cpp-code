@@ -69,5 +69,12 @@ int main() {
         std::cout << "未找到键4" << std::endl;
     }
 
+
+    int *array = new int[100];
+    array[0] = 0;
+    int res = array[101];  // BOOM
+    delete [] array;
+    std::cout << res;
+
     return 0;
 }

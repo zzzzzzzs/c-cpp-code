@@ -58,3 +58,5 @@ build/
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
+
+build_debug/
