@@ -60,3 +60,4 @@ build/
 !.vscode/launch.json
 
 build_debug/
+testdb/
